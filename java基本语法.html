@@ -1,0 +1,3348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>java基本语法</title>
+<!-- 2017-11-25 周六 12:14 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">java基本语法</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. JAVA基本语法</a>
+<ul>
+<li><a href="#sec-1-1">1.1. 常识</a></li>
+<li><a href="#sec-1-2">1.2. 1.初识JAVA</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1. 1.配置jdk</a></li>
+<li><a href="#sec-1-2-2">1.2.2. 2.记事本开发程序步骤</a></li>
+<li><a href="#sec-1-2-3">1.2.3. 3.使用MyEclipse开发程序</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3. 2.变量、数据类型、运算符</a>
+<ul>
+<li><a href="#sec-1-3-1">1.3.1. 变量</a></li>
+<li><a href="#sec-1-3-2">1.3.2. 算术运算符</a></li>
+<li><a href="#sec-1-3-3">1.3.3. 数据类型</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-4">1.4. 3.选择结构</a>
+<ul>
+<li><a href="#sec-1-4-1">1.4.1. 基本的if选择结构</a></li>
+<li><a href="#sec-1-4-2">1.4.2. 多重if选择结构</a></li>
+<li><a href="#sec-1-4-3">1.4.3. 嵌套if选择结构</a></li>
+<li><a href="#sec-1-4-4">1.4.4. if结构书写规范</a></li>
+<li><a href="#sec-1-4-5">1.4.5. switch选择结构</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-5">1.5. 4.循环结构</a>
+<ul>
+<li><a href="#sec-1-5-1">1.5.1. while循环</a></li>
+<li><a href="#sec-1-5-2">1.5.2. do-while循环</a></li>
+<li><a href="#sec-1-5-3">1.5.3. while循环和do-while循环的区别</a></li>
+<li><a href="#sec-1-5-4">1.5.4. for循环</a></li>
+<li><a href="#sec-1-5-5">1.5.5. break:改变程序控制流</a></li>
+<li><a href="#sec-1-5-6">1.5.6. continue：只能用在循环里</a></li>
+<li><a href="#sec-1-5-7">1.5.7. break和continue的区别</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-6">1.6. 5.数组</a>
+<ul>
+<li><a href="#sec-1-6-1">1.6.1. 什么是数组</a></li>
+<li><a href="#sec-1-6-2">1.6.2. 数组基本要素</a></li>
+<li><a href="#sec-1-6-3">1.6.3. 声明数组:告诉计算机数据类型是什么</a></li>
+<li><a href="#sec-1-6-4">1.6.4. 分配空间：告诉计算机分配几个连续的空间</a></li>
+<li><a href="#sec-1-6-5">1.6.5. 赋值：向分配的格子里放数据</a></li>
+<li><a href="#sec-1-6-6">1.6.6. 对数据进行处理：计算5位学生的平均分</a></li>
+<li><a href="#sec-1-6-7">1.6.7. 查询</a></li>
+<li><a href="#sec-1-6-8">1.6.8. 排序</a></li>
+<li><a href="#sec-1-6-9">1.6.9. 求最值</a></li>
+<li><a href="#sec-1-6-10">1.6.10. 插入算法</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-7">1.7. 6.循环结构进阶</a>
+<ul>
+<li><a href="#sec-1-7-1">1.7.1. 在二重循环中使用continue</a></li>
+<li><a href="#sec-1-7-2">1.7.2. 在二重循环中使用break</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-8">1.8. 7.类与对象</a>
+<ul>
+<li><a href="#sec-1-8-1">1.8.1. 对象</a></li>
+<li><a href="#sec-1-8-2">1.8.2. 封装</a></li>
+<li><a href="#sec-1-8-3">1.8.3. 类</a></li>
+<li><a href="#sec-1-8-4">1.8.4. 类和对象的关系</a></li>
+<li><a href="#sec-1-8-5">1.8.5. java是面向对象的语言</a></li>
+<li><a href="#sec-1-8-6">1.8.6. java类模板</a></li>
+<li><a href="#sec-1-8-7">1.8.7. 定义类</a></li>
+<li><a href="#sec-1-8-8">1.8.8. 如何创建和使用对象</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-9">1.9. 8.类的无参、带参方法</a>
+<ul>
+<li><a href="#sec-1-9-1">1.9.1. 如何定义类的方法</a></li>
+<li><a href="#sec-1-9-2">1.9.2. 方法的返回值</a></li>
+<li><a href="#sec-1-9-3">1.9.3. 方法的调用</a></li>
+<li><a href="#sec-1-9-4">1.9.4. 常见错误</a></li>
+<li><a href="#sec-1-9-5">1.9.5. 总结</a></li>
+<li><a href="#sec-1-9-6">1.9.6. 成员变量和局部变量</a></li>
+<li><a href="#sec-1-9-7">1.9.7. JavaDoc注释</a></li>
+<li><a href="#sec-1-9-8">1.9.8. 带参方法</a></li>
+<li><a href="#sec-1-9-9">1.9.9. 包</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-10">1.10. 9.对象与封装</a>
+<ul>
+<li><a href="#sec-1-10-1">1.10.1. 构造方法定义</a></li>
+<li><a href="#sec-1-10-2">1.10.2. 构造方法重载</a></li>
+<li><a href="#sec-1-10-3">1.10.3. 构造方法调用</a></li>
+<li><a href="#sec-1-10-4">1.10.4. static关键字</a></li>
+<li><a href="#sec-1-10-5">1.10.5. 封装</a></li>
+<li><a href="#sec-1-10-6">1.10.6. this的用法</a></li>
+<li><a href="#sec-1-10-7">1.10.7. 总结</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-11">1.11. 10.继承</a>
+<ul>
+<li><a href="#sec-1-11-1">1.11.1. 如何使用继承</a></li>
+<li><a href="#sec-1-11-2">1.11.2. 子类访问父类成员</a></li>
+<li><a href="#sec-1-11-3">1.11.3. 子类可以继承父类的所有资源吗？</a></li>
+<li><a href="#sec-1-11-4">1.11.4. 访问修饰符</a></li>
+<li><a href="#sec-1-11-5">1.11.5. 多重继承关系的初始化顺序</a></li>
+<li><a href="#sec-1-11-6">1.11.6. 方法重写</a></li>
+<li><a href="#sec-1-11-7">1.11.7. 构造方法也会被重写吗？</a></li>
+<li><a href="#sec-1-11-8">1.11.8. 方法重写的规则</a></li>
+<li><a href="#sec-1-11-9">1.11.9. 方法重载与方法重写</a></li>
+<li><a href="#sec-1-11-10">1.11.10. 使用super关键字来访问父类的成员</a></li>
+<li><a href="#sec-1-11-11">1.11.11. 抽象类</a></li>
+<li><a href="#sec-1-11-12">1.11.12. final修饰的方法和类、变量</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-12">1.12. 11.多态</a>
+<ul>
+<li><a href="#sec-1-12-1">1.12.1. 使用多态实现思路</a></li>
+<li><a href="#sec-1-12-2">1.12.2. 实现多态的两种形式</a></li>
+<li><a href="#sec-1-12-3">1.12.3. 实现多态的三种形式</a></li>
+<li><a href="#sec-1-12-4">1.12.4. 代码示例</a></li>
+<li><a href="#sec-1-12-5">1.12.5. 总结</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-13">1.13. 12.接口</a>
+<ul>
+<li><a href="#sec-1-13-1">1.13.1. 接口是一种约定和能力</a></li>
+<li><a href="#sec-1-13-2">1.13.2. 必须知道的接口特性</a></li>
+<li><a href="#sec-1-13-3">1.13.3. 接口有比抽象类更好的特性</a></li>
+<li><a href="#sec-1-13-4">1.13.4. Java中的接口</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-14">1.14. 13.异常</a>
+<ul>
+<li><a href="#sec-1-14-1">1.14.1. Java的异常处理是通过5个关键字来实现的:</a></li>
+<li><a href="#sec-1-14-2">1.14.2. 使用try-catch块捕获异常,分为三种情况:</a></li>
+<li><a href="#sec-1-14-3">1.14.3. 在catch块中处理异常 加入用户自定义处理信息</a></li>
+<li><a href="#sec-1-14-4">1.14.4. 调用方法输出异常信息</a></li>
+<li><a href="#sec-1-14-5">1.14.5. 异常对象常用的方法</a></li>
+<li><a href="#sec-1-14-6">1.14.6. 常见的异常类型</a></li>
+<li><a href="#sec-1-14-7">1.14.7. 什么情况下不走finally</a></li>
+<li><a href="#sec-1-14-8">1.14.8. try块中有return语句执行过程</a></li>
+<li><a href="#sec-1-14-9">1.14.9. 多重catch块</a></li>
+<li><a href="#sec-1-14-10">1.14.10. 总结</a></li>
+<li><a href="#sec-1-14-11">1.14.11. 声明异常</a></li>
+<li><a href="#sec-1-14-12">1.14.12. 抛出异常</a></li>
+<li><a href="#sec-1-14-13">1.14.13. 异常的分类</a></li>
+<li><a href="#sec-1-14-14">1.14.14. throw与throws的区别</a></li>
+<li><a href="#sec-1-14-15">1.14.15. 日志及分类</a></li>
+<li><a href="#sec-1-14-16">1.14.16. 使用log4j记录日志</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-15">1.15. 14.集合框架</a>
+<ul>
+<li><a href="#sec-1-15-1">1.15.1. 为什么使用集合框架</a></li>
+<li><a href="#sec-1-15-2">1.15.2. Java集合框架包含的内容</a></li>
+<li><a href="#sec-1-15-3">1.15.3. 接口介绍</a></li>
+<li><a href="#sec-1-15-4">1.15.4. List接口的实现类</a></li>
+<li><a href="#sec-1-15-5">1.15.5. ArrayList的应用</a></li>
+<li><a href="#sec-1-15-6">1.15.6. List接口常用方法</a></li>
+<li><a href="#sec-1-15-7">1.15.7. LinkedList集合类</a></li>
+<li><a href="#sec-1-15-8">1.15.8. LinkedList的特殊方法</a></li>
+<li><a href="#sec-1-15-9">1.15.9. Map接口</a></li>
+<li><a href="#sec-1-15-10">1.15.10. HashMap类的方法</a></li>
+<li><a href="#sec-1-15-11">1.15.11. Map接口常用方法</a></li>
+<li><a href="#sec-1-15-12">1.15.12. 集合类对比</a></li>
+<li><a href="#sec-1-15-13">1.15.13. 开发过程中,最好使用ArrayList和HashMap</a></li>
+<li><a href="#sec-1-15-14">1.15.14. 迭代器Iterator</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-16">1.16. 程序调试</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> JAVA基本语法</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 常识</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+-类名（class）首字母大写
+-package(包名) 全部小写， 公司域名逆序com.bdqn.项目名.controller
+-//单行注释；/*  <b>/多行注释；/*</b>  */文档注释
+-syso+alt+? 快捷方式
+-public 公共的 static 静态的  void 空返回值的 main主函数
+-(" ".equals())
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 1.初识JAVA</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 1.配置jdk</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+-（1）找到jdk6.0的路径 D:Program Files\Java\jdk1.6.0<sub>10\bin</sub>         java.exe,javac.exe
+-（2）计算机属性-&gt;环境变量-&gt;系统变量-&gt;path
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> 2.记事本开发程序步骤</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+-（1）编写.java源文件
+-（2）编译源文件
+-（3）javac 源文件名.java
+-（4）java 源文件
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 3.使用MyEclipse开发程序</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+-（1）file-&gt;new-&gt;javaproject新建工程
+-（2）右击 工程名-&gt;new-&gt;class-&gt;类名
+-（3）编写程序
+-（4）运行程序
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 2.变量、数据类型、运算符</h3>
+<div class="outline-text-3" id="text-1-3">
+</div><div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> 变量</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+-变量的定义
+</p>
+<ul class="org-ul">
+<li>变量是储存数据的空间
+</li>
+<li>变量的命名规则
+</li>
+<li>(1)首字母：1、字母 2、下划线_ 3、'\('符号+1、数字2、字母3、下划线'_'4、'\)'符号
+</li>
+<li>(2)不能使用关键词   int    void
+</li>
+<li>(3)不能重复定义h
+</li>
+<li>(4)首字母小写，其余首字母大写，见名之意。
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> 算术运算符</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<p>
+单目运算符
+</p>
+<ul class="org-ul">
+<li>口诀：++（&#x2013;）在前，先+（-）再赋值     ++（&#x2013;）在后，先赋值再自+（-）
+</li>
+<li>num++等价于num=num+1；++num；
+</li>
+<li>num&#x2013;等价于num=num-1；&#x2013;num；
+</li>
+</ul>
+<p>
+三目运算符
+</p>
+<ul class="org-ul">
+<li>int num3=(num1&gt;num2)?5:2
+</li>
+<li>等价于：如果num1&gt;num2 那么num3=5；否则如果num1&lt;num2 那么num3=2；
+</li>
+<li>num1&gt;num2为真的话num3=5；假的话num3=2；  
+</li>
+</ul>
+</div>
+<ol class="org-ol"><li><a id="sec-1-3-2-1" name="sec-1-3-2-1"></a>运算符的优先级<br  /><div class="outline-text-5" id="text-1-3-2-1">
+<ul class="org-ul">
+<li>最高的优先级：小括号，即（）
+</li>
+<li>最低的优先级：赋值运算符，即=
+</li>
+<li>优先级顺序：算术运算符&gt;关系运算符&gt;逻辑运算符
+</li>
+</ul>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> 数据类型</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+-数据类型转换包括自动类型转换和强制类型转换
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-3-3-1" name="sec-1-3-3-1"></a>自动类型转换规则<br  /><div class="outline-text-5" id="text-1-3-3-1">
+<ul class="org-ul">
+<li>规则1：如果一个操作数为double型，则整个表达式可提升为double型
+</li>
+<li>规则2：满足自动类型转换的条件
+</li>
+<li>&gt;两种类型要兼容
+-数值类型（整型和浮点型）互相兼容
+&gt;目标类型大于源类型：
+-例如：double型大于int型    int-&gt;double 小转大自动转换
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-java">double a=2.5;
+int b=3;
+double c;
+c=a+b;
+</pre>
+</div>
+</div>
+</li>
+<li><a id="sec-1-3-3-2" name="sec-1-3-3-2"></a>强制类型转换<br  /><div class="outline-text-5" id="text-1-3-3-2">
+<p>
+-（类型名）表达式
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">int b=(int)10.2;
+double a=10;
+int c=(int)a;
+&lt;/html&gt;
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 3.选择结构</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+-if选择结构是根据条件判断之后再做处理
+</p>
+</div>
+<div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> 基本的if选择结构</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<div class="org-src-container">
+
+<pre class="src src-java">   if（条件）{ //条件的结果必须是布尔值；true执行代码块,false退出不执行
+	 //代码块          只有一条语句时，{}可以省略，建议不省略
+}
+</pre>
+</div>
+<p>
+-运算符优先级顺序： ！&gt;算术运算符&gt;比较运算符&gt;&amp;&amp;&gt;||
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> 多重if选择结构</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+-可以处理分段的条件分支情况
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">if(){
+
+}else if(){//else if可以有多个
+
+}else{//可以省略
+      //每个else都跟它上一个最近的if配对
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> 嵌套if选择结构</h4>
+<div class="outline-text-4" id="text-1-4-3">
+<p>
+-可以处理复杂的条件分支情况
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">if(){//外层选择结构
+  if(){//内层选择结构
+
+  }else if(){
+
+  }
+}else{
+
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-4-4" class="outline-4">
+<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> if结构书写规范</h4>
+<div class="outline-text-4" id="text-1-4-4">
+<ul class="org-ul">
+<li>为了使if结构更加清晰、避免执行错误，应该把每个if或else包含的代码块都用大括号括起来
+</li>
+<li>相匹配的一对if和else应该左对齐
+</li>
+<li>内层的if结构相对于外层的if结构要有一定的缩进
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-4-5" class="outline-4">
+<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> switch选择结构</h4>
+<div class="outline-text-4" id="text-1-4-5">
+<p>
+-多重分支并且条件判断是等值判断的情况
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">switch(){//()注意必须是int或char类型 表达式
+case 1:  //java7.0以后的版本可以对String类进行判断
+    break;
+case 2:
+    break;
+case 3:
+    break;
+default://default块顺序可以变动，但要注意其执行顺序。
+     break;    //通常，default块放在末尾，也可以省略      
+
+}
+</pre>
+</div>
+<p>
+-Scanner对象的hasNextInt()方法，可以判断用户从键盘输入的字符是否是合法的数字
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">Scanner input=new Scanner(System.in);
+if(input.hasNextInt()){//如果输入的是数字
+	int num=input.nextInt();
+	switch(num){
+	case 1:
+	       break;
+	case 2:
+	      break;
+	default:
+	      break;
+	}
+}else{//如果输入的不是数字
+      System.out.println("请输入正确的数字！");
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 4.循环结构</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+-适用情况
+</p>
+<ul class="org-ul">
+<li>循环次数确定的情况，通常选用for循环
+</li>
+<li>循环次数不确定的情况，通常选用while或do-while循环
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> while循环</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<p>
+-特点:先判断，再执行
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">while(循环条件){//符合条件，循环继续执行；否则，循环退出
+    循环操作  //循环中被重复执行的操作
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> do-while循环</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+-特点：先执行，再判断
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">do{
+   循环操作//先执行一遍循环操作
+}while(循环条件);//分号不可少
+		//符合条件，循环继续执行；否则，循环退出
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> while循环和do-while循环的区别</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<p>
+-执行次序不同
+-初始情况不满足循环条件时
+</p>
+<ul class="org-ul">
+<li>&gt;while循环一次都不会执行
+</li>
+<li>&gt;do-while循环不管任何情况都至少执行一次
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-5-4" class="outline-4">
+<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> for循环</h4>
+<div class="outline-text-4" id="text-1-5-4">
+<p>
+-先判断，再执行
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-5-4-1" name="sec-1-5-4-1"></a>for循环的语法<br  /><div class="outline-text-5" id="text-1-5-4-1">
+<div class="org-src-container">
+
+<pre class="src src-java">for(表达式1;表达式2;表达式3){
+    //循环体
+}
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-java">for(int i=0;i&lt;100;i++){
+
+}
+</pre>
+</div>
+</div>
+</li>
+<li><a id="sec-1-5-4-2" name="sec-1-5-4-2"></a>加法表<br  /><div class="outline-text-5" id="text-1-5-4-2">
+<div class="org-src-container">
+
+<pre class="src src-java">int val=input.nextInt();
+for(int i=0,j=val;i&lt;=val;i++,j--){
+System.out.println(i+"+"+j+"="+(i+j));
+}
+</pre>
+</div>
+</div>
+</li>
+<li><a id="sec-1-5-4-3" name="sec-1-5-4-3"></a>for循环常见问题<br  /><div class="outline-text-5" id="text-1-5-4-3">
+<ul class="org-ul">
+<li>1.编译错误：变量i没有初始化
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-java">//int i=0; 可以在外面声明
+for(;i&lt;10;i++){
+    System.out.println("这是"+i);
+}
+</pre>
+</div>
+<ul class="org-ul">
+<li>表达式1省略，循环变量赋初始值在for语句之前由赋值语句完成
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-java">for（&lt;初始化循环变量&gt;;&lt;循环条件&gt;;&lt;修改循环变量的值&gt;){
+    &lt;循环体语句&gt;;
+}
+</pre>
+</div>
+<ul class="org-ul">
+<li>2.编译正确，但是缺少循环条件，造成死循环
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-java">for(int i=0;;i++){
+    System.out.println("这是"+i);
+}
+</pre>
+</div>
+<ul class="org-ul">
+<li>3.编译通过，但是循环变量的值无变化，造成死循环；
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-java">for(int i=0;i&lt;10;){
+   System.out.println("这是"+i);
+   //i++;           省略表达式3，在循环体内应设法改变循环变量的值以结束循环
+}
+</pre>
+</div>
+<ul class="org-ul">
+<li>4.表达式全省略，无条件判断，循环变量无改变，应在循环体内设法结束循环；否则会造成死
+循环
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-java">for(;;){
+    System.out.println("这是测试");
+}
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-5-5" class="outline-4">
+<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> break:改变程序控制流</h4>
+<div class="outline-text-4" id="text-1-5-5">
+<p>
+-用于do-while、while、for时，可跳出循环而执行循环后面的语句
+-break通常在循环中与条件语句一起使用
+-跳出整个循环
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-5-6" class="outline-4">
+<h4 id="sec-1-5-6"><span class="section-number-4">1.5.6</span> continue：只能用在循环里</h4>
+<div class="outline-text-4" id="text-1-5-6">
+<p>
+-跳过循环体中剩余的语句而执行下一次循环
+-通常与条件语句一起使用，加速循环
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-5-7" class="outline-4">
+<h4 id="sec-1-5-7"><span class="section-number-4">1.5.7</span> break和continue的区别</h4>
+<div class="outline-text-4" id="text-1-5-7">
+</div><ol class="org-ol"><li><a id="sec-1-5-7-1" name="sec-1-5-7-1"></a>使用场景<br  /><div class="outline-text-5" id="text-1-5-7-1">
+<p>
+-break常用于switch结构和循环结构中
+-continental一般用于循环结构中
+</p>
+</div>
+</li>
+<li><a id="sec-1-5-7-2" name="sec-1-5-7-2"></a>作用（循环结构中）<br  /><div class="outline-text-5" id="text-1-5-7-2">
+<p>
+-break语句终止某个循环，程序跳转到循环块外的下一条语句
+-continue跳出本次循环，进入下一次循环
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 5.数组</h3>
+<div class="outline-text-3" id="text-1-6">
+</div><div id="outline-container-sec-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> 什么是数组</h4>
+<div class="outline-text-4" id="text-1-6-1">
+<p>
+-数组是一个变量，存储相同数据类型的一组数据
+-声明一个变量就是在内存空间划出一块合适的空间
+-声明一个数组就是在内存空间划出一串连续的空间
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-6-2" class="outline-4">
+<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> 数组基本要素</h4>
+<div class="outline-text-4" id="text-1-6-2">
+<ul class="org-ul">
+<li>标识符：数组的名称，用于区分不同的数组
+</li>
+<li>数组元素：向数组中存放的数据
+</li>
+<li>元素下标：对数组元素进行编号，从0开始，数组中的每个元素都可以通过下标来访问
+</li>
+<li>元素类型：数组元素的数据类型
+</li>
+<li>数组长度固定不变，避免数组越界
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-6-3" class="outline-4">
+<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> 声明数组:告诉计算机数据类型是什么</h4>
+<div class="outline-text-4" id="text-1-6-3">
+<div class="org-src-container">
+
+<pre class="src src-java">int[] score1;
+int score2[];
+String[] name;
+</pre>
+</div>
+<p>
+-声明数组时不规定数组长度
+</p>
+<ul class="org-ul">
+<li>数据类型 数组名[];
+</li>
+<li>数据类型[] 数组名;  //推荐用这一种
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-6-4" class="outline-4">
+<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> 分配空间：告诉计算机分配几个连续的空间</h4>
+<div class="outline-text-4" id="text-1-6-4">
+<div class="org-src-container">
+
+<pre class="src src-java">score=new int[30];
+avgAge=new int[6];
+name=new String[30];
+</pre>
+</div>
+<ul class="org-ul">
+<li>声明数组并分配空间
+</li>
+</ul>
+<p>
+数据类型[] 数组名=new 数据类型[大小];
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-6-5" class="outline-4">
+<h4 id="sec-1-6-5"><span class="section-number-4">1.6.5</span> 赋值：向分配的格子里放数据</h4>
+<div class="outline-text-4" id="text-1-6-5">
+<div class="org-src-container">
+
+<pre class="src src-java">score[0]=89;
+score[1]=79;
+score[2]=76;
+</pre>
+</div>
+<ul class="org-ul">
+<li>方法1：边声明边赋值
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-java">int[] score={89,79,76};//不能分行写
+int[] score=new int[]{89,79,76};//[]不能指定数组长度  可以分行写 如int[] score;
+				//score=new int[]{89,79,76};  score=new int[5];
+</pre>
+</div>
+<ul class="org-ul">
+<li>方法2：动态地从键盘录入信息并赋值
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-java">Scanner input=new Scanner(System.in);
+for(int i=0;i&lt;30;i++){
+    score[i]=input.nexrInt();
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-6-6" class="outline-4">
+<h4 id="sec-1-6-6"><span class="section-number-4">1.6.6</span> 对数据进行处理：计算5位学生的平均分</h4>
+<div class="outline-text-4" id="text-1-6-6">
+<p>
+-访问数组成员：使用"标识符[下标]"
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">int[] score={60,80,90,70,85};
+double avg;
+avg=(score[0]+score[1]+score[2]+score[3]+score[4])/5;//访问数组成员：使用"标识符[下标]"
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-java">int[] score={60,80,90,70,85};
+int sum=0;
+double avg;
+for(int i=0;i&lt;score.length;i++){//数组的length属性
+    sum=sum+score[i];//访问成员
+}
+avg=sum/score.length;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-6-7" class="outline-4">
+<h4 id="sec-1-6-7"><span class="section-number-4">1.6.7</span> 查询</h4>
+<div class="outline-text-4" id="text-1-6-7">
+<div class="org-src-container">
+
+<pre class="src src-java">for(int i=0;i&lt;score4.length;i++){
+    System.out.println(score4[i]);
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-6-8" class="outline-4">
+<h4 id="sec-1-6-8"><span class="section-number-4">1.6.8</span> 排序</h4>
+<div class="outline-text-4" id="text-1-6-8">
+<p>
+-使用java.util.Arrays类
+     java.util包提供了许多工具类
+     Arrays类提供操作数组的方法，例排序、查询
+     Arrays类的sort()方法：对数组进行升序排列
+     Arrays.sort(数组名);
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">System.out.println("排序前数组的顺序");
+for(int i=0;i&lt;scores.length;i++){
+    System.out.print(scores[i]+"\t");
+}
+Arrays.sort(scores);//升序排列
+System.out.println("\n排序后数组的顺序");
+for(int i=0;i&lt;scores.length;i++){
+    System.out.print(scores[i]+"\t");
+}
+System.out.println("\n降序后数组的顺序");
+for(int i=0;i&lt;scores.length;i++){
+    System.out.print(scores[scores.length-1-i]+"\t");
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-6-9" class="outline-4">
+<h4 id="sec-1-6-9"><span class="section-number-4">1.6.9</span> 求最值</h4>
+<div class="outline-text-4" id="text-1-6-9">
+<div class="org-src-container">
+
+<pre class="src src-java">//计算成绩最大
+max=scores[0];
+for(int i=1;i&lt;scores.length;i++){
+    if(scores[i]&gt;max){
+       max=scores[i];
+     }
+}
+System.out.println("考试成绩最高分为："+max);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-6-10" class="outline-4">
+<h4 id="sec-1-6-10"><span class="section-number-4">1.6.10</span> 插入算法</h4>
+<div class="outline-text-4" id="text-1-6-10">
+<div class="org-src-container">
+
+<pre class="src src-java">int[] list=new int[6];
+int index=list.length;//保存新增成绩插入位置
+//....省略为数组和变量赋值
+for(int i=0;i&lt;list.length;i++){
+    if(num&gt;list[i]){
+       index=i;
+       break;
+    }
+}
+for(int j=list.length-1;j&gt;index;j--){
+    list[j]=list[j-1];
+}
+list[index]=num;//插入数据
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> 6.循环结构进阶</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+二重循环的定义
+  一个循环体内又包含另一个完整的循环结构
+</p>
+</div>
+<div id="outline-container-sec-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> 在二重循环中使用continue</h4>
+<div class="outline-text-4" id="text-1-7-1">
+<div class="org-src-container">
+
+<pre class="src src-java">int[] score=new int[4];
+int classNum=3;
+double sum=0.0;
+double average=0.0;
+int count=0;
+//班级个数  
+for(int j=1;j&lt;=classnum;j++){
+   System.out.println("第"+j+"个班级的成绩:");
+   sum=0.0;
+   //4名学生的总成绩和平均分   
+   for(int i=0;i&lt;score.length;i++){
+       System.out.println("请输入第"+(i+1)+"名学生的成绩:");
+       score[i]=input.nextInt();
+       sum=sum+score[i];//sum+=score[i];
+       if(score[i]&lt;85){
+	  continue;     //执行continue,进入本层循环的下一轮循环,不再执行count++
+       }
+       count++;
+	System.out.println("和为:"+sum);
+
+   } //for
+    average=sum/score.length;
+    System.out.println("第"+j+"个班级的4名学生的平均分为:"+average);
+
+}//for
+    System.out.println("大于等于85分的人数为:"+count);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> 在二重循环中使用break</h4>
+<div class="outline-text-4" id="text-1-7-2">
+<div class="org-src-container">
+
+<pre class="src src-java">int count=0;
+String choice;
+//外层控制专卖店的个数
+for(int i=0;i&lt;5;i++){
+    System.out.println("欢迎光临第"+(i+1)+"家专卖店)";
+    //控制最多买的衣服个数
+    for(int j=0;j&lt;3;j++){
+	System.out.println("要离开吗(y/n)?");
+	choice=input.next();
+	if("y".equals(choice)){
+	   break;   //执行break,跳出内层循环，继续执行外层循环的语句
+	}
+	System.out.println("买了一件衣服");
+	count++;    //计数器加1
+      } 
+}
+System.out.println("总共买了"+count+"件衣服");
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> 7.类与对象</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+-面向对象(oo)的优点
+ 与人类的思维习惯一致
+ 信息隐藏,提高了程序的可维护性和安全性
+ 提高了程序的可重用性
+-从现实世界抽象出类
+ 找出名词确定类、属性
+ 找出动词确定方法
+ 剔除与业务无关的属性和方法
+</p>
+</div>
+<div id="outline-container-sec-1-8-1" class="outline-4">
+<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> 对象</h4>
+<div class="outline-text-4" id="text-1-8-1">
+<p>
+-对象:用来描述客观事物的一个实体,由一组属性和方法构成
+-对象的特征-属性
+ 属性-对象具有的各种特征
+ 每个对象的每个属性都拥有特定值
+-对象的特征-方法
+ 方法-对象执行的操作
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-8-2" class="outline-4">
+<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> 封装</h4>
+<div class="outline-text-4" id="text-1-8-2">
+<p>
+-对象同时具有属性和方法两项特性
+-对象的属性和方法通常被封装在一起,共同体现事物的特性,二者相辅相承,不能分割
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-8-3" class="outline-4">
+<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> 类</h4>
+<div class="outline-text-4" id="text-1-8-3">
+<p>
+-类定义了对象将会拥有的特征（属性）和行为（方法）
+-类是对象的类型，对象是类的实例
+-使用类的步骤
+ 定义类(使用关键字class)-&gt;创建类的对象(使用关键字new)-&gt;使用类的属性和方法(使用"."操作符)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-8-4" class="outline-4">
+<h4 id="sec-1-8-4"><span class="section-number-4">1.8.4</span> 类和对象的关系</h4>
+<div class="outline-text-4" id="text-1-8-4">
+<p>
+-类是抽象的概念,仅仅是模板
+-对象是一个你能够看得到、摸得着的具体实体
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-8-5" class="outline-4">
+<h4 id="sec-1-8-5"><span class="section-number-4">1.8.5</span> java是面向对象的语言</h4>
+<div class="outline-text-4" id="text-1-8-5">
+<p>
+-所有java程序都以类class为组织单元
+-关键字class定义自定义的数据类型
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-8-6" class="outline-4">
+<h4 id="sec-1-8-6"><span class="section-number-4">1.8.6</span> java类模板</h4>
+<div class="outline-text-4" id="text-1-8-6">
+<p>
+-类将现实世界中的概念模拟到计算机程序中
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public class 类名{
+     //定义属性部分
+     属性1的类型  属性1;
+     属性2的类型  属性2;
+     ...
+     属性n的类型  属性n;
+     //定义方法部分
+     方法1;
+     方法2;
+     ...
+     方法m;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-8-7" class="outline-4">
+<h4 id="sec-1-8-7"><span class="section-number-4">1.8.7</span> 定义类</h4>
+<div class="outline-text-4" id="text-1-8-7">
+<p>
+-定义一个类的步骤
+定义类名-&gt;编写类的属性-&gt;编写类的方法
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public class Person{
+    String pName;      //人类姓名
+    String pSex;       //人类性别        -&gt;成员变量
+    int pAge;          //人类年龄     
+    //定义人类说的方法
+    public void speak(){                 -&gt;方法
+       System.out.println("姓名为:"+pName+"性别为:"+psex+"年龄为:"+pAge);
+    }   //定义类的speak()方法,用于输出人类说的信息 
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-8-8" class="outline-4">
+<h4 id="sec-1-8-8"><span class="section-number-4">1.8.8</span> 如何创建和使用对象</h4>
+<div class="outline-text-4" id="text-1-8-8">
+<p>
+-使用对象的步骤
+-创建对象
+  类名 对象名=new 类名();
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">Person dx=new Person();
+</pre>
+</div>
+<p>
+-引用对象成员：使用"."进行一下操作
+ 引用类的属性：对象名.属性
+ 引用类的方法：对象名.方法名()
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">dx.pName="北京中心";  //给pName属性赋值
+dx.speak();    //调用speak方法
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> 8.类的无参、带参方法</h3>
+<div class="outline-text-3" id="text-1-9">
+<p>
+-面向对象(oo)思想
+ 类的方法实现某个特定的功能,其他类不需要知道它如何实现,调用方法就可以了,不用重复写代码！
+</p>
+</div>
+<div id="outline-container-sec-1-9-1" class="outline-4">
+<h4 id="sec-1-9-1"><span class="section-number-4">1.9.1</span> 如何定义类的方法</h4>
+<div class="outline-text-4" id="text-1-9-1">
+<p>
+-类的方法定义类的某种行为（或功能）
+                   方法的名称
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+<p>
+方法返回值的数据类型&lt;-方法的定义-&gt;方法的主体
+-定义类的方法
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public 返回值类型 方法名(){  步骤一:定义方法名以及返回值类型
+       //这里编写方法的主体   
+			   步骤二:编写方法体
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-9-2" class="outline-4">
+<h4 id="sec-1-9-2"><span class="section-number-4">1.9.2</span> 方法的返回值</h4>
+<div class="outline-text-4" id="text-1-9-2">
+<p>
+-两种情况
+ 如果方法具有返回值,方法中必须使用关键字return返回该值,返回值类型为该返回值的类型
+ return 表达式;             作用:跳出方法、返回结果
+ 如果方法没有返回值,返回值类型为void
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-9-3" class="outline-4">
+<h4 id="sec-1-9-3"><span class="section-number-4">1.9.3</span> 方法的调用</h4>
+<div class="outline-text-4" id="text-1-9-3">
+<p>
+-方法是个"黑盒子",也是一个动作,行为,完成某个特定的应用程序功能,并返回结果
+-方法调用:执行方法中包含的语句
+ 对象名.方法名();
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public class Dolly(
+  String color="粉色";
+  public String getColor(){
+      return color;
+  }
+  public String showDolly(){
+  return"这是一个"+getColor()+"的洋娃娃"; //在类的方法中调用该类另一个方法
+  }
+)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-9-4" class="outline-4">
+<h4 id="sec-1-9-4"><span class="section-number-4">1.9.4</span> 常见错误</h4>
+<div class="outline-text-4" id="text-1-9-4">
+<p>
+方法的返回值类型为void,方法中不能有return返回值
+方法不能返回多个值
+多个方法不能相互嵌套定义
+不能在方法外部直接写程序逻辑代码
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-9-5" class="outline-4">
+<h4 id="sec-1-9-5"><span class="section-number-4">1.9.5</span> 总结</h4>
+<div class="outline-text-4" id="text-1-9-5">
+<p>
+-方法之间允许相互调用,不需要知道方法的具体实现,实现重用,提高效率
+  方法的格式                     情况                      举例 
+ 空返回值的方法           Student类的方法a()调用          public void a(){
+public void 方法名()     Student类的方法b(),直接           b();  //调用b()                               
+   {                    调用                            }
+    方法体;
+   }                     
+ 有返回值的方法
+public 返回类型 方法名()     Student类的方法a()调用        public void a(){
+     {                     Teacher类的方法b(),先创         Teacher t=new Teacher();
+       方法体;              建类对象,然后使用"."调用         t.b(); //调用Teacher类的b()
+      return 返回类型值;                                  }
+     }
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-9-6" class="outline-4">
+<h4 id="sec-1-9-6"><span class="section-number-4">1.9.6</span> 成员变量和局部变量</h4>
+<div class="outline-text-4" id="text-1-9-6">
+<p>
+-变量声明的位置决定变量作用域
+-变量作用域确定可在程序中按变量名访问该变量的区域
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-9-6-1" name="sec-1-9-6-1"></a>成员变量和局部变量的区别<br  /><div class="outline-text-5" id="text-1-9-6-1">
+<p>
+-作用域不同
+ 局部变量的作用域仅限于定义它的方法
+ 成员变量的作用域在整个类内部都是可见的
+-初始值不同
+ Java会给成员变量一个初始值
+ Java不会给局部变量赋予初始值
+-在同一个方法中,不允许有同名局部变量
+-在不同的方法中,可以有同名局部变量
+-在同一个类中,成员变量和局部变量同名时,局部变量具有更高的优先级        
+</p>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-9-7" class="outline-4">
+<h4 id="sec-1-9-7"><span class="section-number-4">1.9.7</span> JavaDoc注释</h4>
+<div class="outline-text-4" id="text-1-9-7">
+<p>
+-JavaDoc注释:使用"<i>**"开始和"*</i>"结束,用来注释类、属性和方法等
+/**
+*AccpSchool类      描述信息     
+*@author JadeBird      @author:描述作者信息
+*@version  1.0 2011/06/21     @version:描述版本信息
+*/     
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-9-7-1" name="sec-1-9-7-1"></a>如何添加JavaDoc注释<br  /><div class="outline-text-5" id="text-1-9-7-1">
+<div class="org-src-container">
+
+<pre class="src src-java">/**
+ *AccpSchool类           
+ *@author JadeBird                     类的JavaDoc注释
+ *@version  1.0 2011/06/21    
+ */    
+
+public class ScoreCalc{
+       /**Java成绩*/
+       int java;                      属性的JavaDoc注释
+       //...
+
+       /**
+	*计算总成绩                     方法的JavaDoc注释
+	*@return total
+	*/
+
+	public int calcTotalScore(){         
+	     int total=java+c+db;           
+	     return total;
+	       //...  }
+}
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-9-8" class="outline-4">
+<h4 id="sec-1-9-8"><span class="section-number-4">1.9.8</span> 带参方法</h4>
+<div class="outline-text-4" id="text-1-9-8">
+<p>
+-带参方法定义的一般形式
+&lt;访问修饰符&gt; 返回类型 &lt;方法名&gt;(&lt;参数列表&gt;){
+ //方法的主体
+}
+-形参是在定义方法时对参数的称呼
+-实参是在调用方法时传递给方法的实际的值
+-调用带参方法时要求实参与形参要匹配
+-调用方法时不能指定实参类型
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-9-8-1" name="sec-1-9-8-1"></a>数组作为参数的方法<br  /><div class="outline-text-5" id="text-1-9-8-1">
+<div class="org-src-container">
+
+<pre class="src src-java">public int calMax(int[] scores){
+  int max=scores[0];
+  for(int i=1;i&lt;scores.length;i++){
+      if(max&lt;scores[i]){
+	 max=scores[i]; 
+       } 
+
+   }
+   return max;
+}
+//调用
+int[] scores=new int[5];
+int maxScore=st.calMax(scores);
+</pre>
+</div>
+</div>
+</li>
+<li><a id="sec-1-9-8-2" name="sec-1-9-8-2"></a>对象作为参数的方法<br  /><div class="outline-text-5" id="text-1-9-8-2">
+<div class="org-src-container">
+
+<pre class="src src-java">public class Student{
+      public int id;
+      public String name;
+      public int age;
+      public int score;
+      public void showInfo(){
+	   System.out.println(id+"\t"+name...);
+       }
+}
+public void addStudent(Student stu){
+  for(int i=0;i&lt;student.length;i++){
+     if(students[i]==null){
+	students[i]=stu;
+	break;  
+      }
+
+  }
+
+}
+</pre>
+</div>
+</div>
+</li>
+<li><a id="sec-1-9-8-3" name="sec-1-9-8-3"></a>对象作为数组步骤<br  /><div class="outline-text-5" id="text-1-9-8-3">
+<p>
+-步骤1:定义一个类 如：Student
+-步骤2：其他类中定义一个方法接受对象参数
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public void Show(Student stu){
+ //优点：避免了参数过多造成的代码麻烦。代码简洁
+}
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-9-9" class="outline-4">
+<h4 id="sec-1-9-9"><span class="section-number-4">1.9.9</span> 包</h4>
+<div class="outline-text-4" id="text-1-9-9">
+</div><ol class="org-ol"><li><a id="sec-1-9-9-1" name="sec-1-9-9-1"></a>为什么需要包<br  /><div class="outline-text-5" id="text-1-9-9-1">
+<p>
+-Windows树形文件系统
+ 文档分门别类,易于查找和管理
+ 使用目录解决文件同名冲突问题
+</p>
+</div>
+</li>
+<li><a id="sec-1-9-9-2" name="sec-1-9-9-2"></a>包的作用<br  /><div class="outline-text-5" id="text-1-9-9-2">
+<p>
+-解决类的同名问题
+ 允许类组成较小的单元(类似文件夹),易于找到和使用相应的文件
+ 防止命名冲突
+ 更好的保护类、属性和方法
+</p>
+</div>
+</li>
+<li><a id="sec-1-9-9-3" name="sec-1-9-9-3"></a>如何创建包<br  /><div class="outline-text-5" id="text-1-9-9-3">
+<p>
+              包名
+package cn.jbit.classandobject; //声明包
+作为Java源代码第一条语句  用package声明包,以分号结尾 
+</p>
+</div>
+</li>
+<li><a id="sec-1-9-9-4" name="sec-1-9-9-4"></a>包命名规范<br  /><div class="outline-text-5" id="text-1-9-9-4">
+<p>
+-包名由小写字母组成,不能以圆点开头或结尾
+package mypackage;
+-包名之前最好加上唯一的前缀,通常使用组织倒置的网络域名
+package net.javagroup.mypackage;
+-包名后续部分依不同机构内部的规范不同而不同
+package net.javagroup.research.powerproject;
+                        部门名     项目名
+</p>
+</div>
+</li>
+<li><a id="sec-1-9-9-5" name="sec-1-9-9-5"></a>使用MyEclipse创建包的两种方法<br  /><div class="outline-text-5" id="text-1-9-9-5">
+<p>
+-分别创建包和类
+-创建类的过程中创建类所在的包
+</p>
+</div>
+</li>
+<li><a id="sec-1-9-9-6" name="sec-1-9-9-6"></a>包与目录的关系<br  /><div class="outline-text-5" id="text-1-9-9-6">
+<p>
+-创建好的包和Java源文件是如何存储的？
+ 创建包cn.jbit.classandobject,
+ 即创建了目录结构:cn\jbit\classandobject
+cn-&gt;jbit-&gt;classandobject-&gt;HelloAccp.java 
+</p>
+</div>
+</li>
+<li><a id="sec-1-9-9-7" name="sec-1-9-9-7"></a>如何导入包<br  /><div class="outline-text-5" id="text-1-9-9-7">
+<p>
+-为了使用不在同一包中的类,需要在Java程序中使用import关键字导入这个类
+import java.until.*;    //导入java.util包中所有类
+import cn.jbit.classandobject.AccpSchool;  //导入指定包中指定类 
+import 包名.类名;  //注意:必须在package的下面导入
+     包名                         类名
+1.系统包:java.util            *:指包中的所有类     
+2.自定义包:                    AccpSchool:指包中的
+cn.jbit.classandobject        AccpSchool类
+</p>
+</div>
+</li>
+<li><a id="sec-1-9-9-8" name="sec-1-9-9-8"></a>总结<br  /><div class="outline-text-5" id="text-1-9-9-8">
+<p>
+声明包的含义:声明当前类所处的位置
+导入包的含义:声明在当前类中要使用到的别的类所处的位置      
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+<div id="outline-container-sec-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> 9.对象与封装</h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+-软件出现的目的
+ 用计算机的语言描述现实世界
+ 用计算机解决现实世界的问题
+-面向对象设计和开发程序的好处
+ 交流更加流畅
+ 提高设计和开发效率
+</p>
+</div>
+<div id="outline-container-sec-1-10-1" class="outline-4">
+<h4 id="sec-1-10-1"><span class="section-number-4">1.10.1</span> 构造方法定义</h4>
+<div class="outline-text-4" id="text-1-10-1">
+<p>
+无返回值类型  与类名相同  可以指定参数
+访问修饰符 构造方法名(){
+  //初始化代码
+}
+-系统提供默认无参构造方法
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public Penguin(){
+}
+</pre>
+</div>
+<p>
+-无参数构造
+  1.方法名与类同名
+  2.没有返回值
+  3.与返回的修饰符无关
+作用：给成员属性默认赋予初始值
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-10-2" class="outline-4">
+<h4 id="sec-1-10-2"><span class="section-number-4">1.10.2</span> 构造方法重载</h4>
+<div class="outline-text-4" id="text-1-10-2">
+<p>
+-重载
+ 方法名相同，参数列表不同（个数，类型，顺序），在同一个类中。
+-自定义构造方法
+ 系统不再提供默认无参构造方法
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public Penguin(){               方法名相同
+     name="qq";                 参数项不相同   
+     love=20;                   与返回值、               方法重载
+     sex="Q仔";                 访问修饰符无关
+}
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-java">public Penguin(String name,int health,int love,String sex){
+      this.name=name;            //this关键字是对一个对象的默认引用,
+      this.health=health;        // 这里用以区分同名成员变量
+      this.love=love;
+      this.sex=sex;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-10-3" class="outline-4">
+<h4 id="sec-1-10-3"><span class="section-number-4">1.10.3</span> 构造方法调用</h4>
+<div class="outline-text-4" id="text-1-10-3">
+<p>
+-构造方法重载的调用
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">pgn=new Penguin();            public Penguin(){ 
+pgn.print()                        name="qq";  //系统默认会分配一个无参数构造,                
+				   love=20;   //调用无参数构造赋值
+				   sex="Q仔";                    
+			       }
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-java">pgn=new Penguin("美美",80,20,"Q仔")     public Penguin(String name,int health,int love,String sex){
+pgn.print()                                this.name=name;           
+					   this.health=health; //自定义一个有参数构造,系统不再默认分配
+					   this.love=love;    //无参数构造,使用无参数构造时,
+					   this.sex=sex;     //必须手动添加无参数构造的定义
+					  }
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-10-4" class="outline-4">
+<h4 id="sec-1-10-4"><span class="section-number-4">1.10.4</span> static关键字</h4>
+<div class="outline-text-4" id="text-1-10-4">
+<p>
+-可否通过类名直接访问成员变量？
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">Penguin pgn1=new Penguin();
+pgn1.sex=Penguin.SEX_MALE;
+</pre>
+</div>
+<p>
+-使用static定义变量
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">class Penguin{///用final修饰的变量称为常量,其值固定不变
+  static final String SEX_MALE="Q仔";
+  static final String SEX_FEMALE="Q妹";
+}
+</pre>
+</div>
+<p>
+-使用static定义方法
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">static void print(){}  //用类名调用：Penguin.print();
+</pre>
+</div>
+<p>
+-企鹅类
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public class Penguin(
+    static String name;//静态成员变量 类变量
+    int health;//实例变量 普通成员变量
+    String sex;
+    static final String PENGUIN_SEX1="Q仔";//静态常量
+  public static void showPeng(){
+      System.out.println("静态方法中名称为："+name);
+  }
+//静态代码块中只能给static的属性赋值
+  static{
+     name="初始值";
+     System.out.println("我是静态代码块");
+  }//注意：代码块作用给静态属性赋予初始值使用的,永远都比构造方法先执行一步。
+)
+</pre>
+</div>
+<p>
+-测试类
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">Penguin peng=new Penguin();
+//调用静态的方式1：实例化对象，对象.静态方法();  对象.静态属性
+peng.showpeng();
+peng.sex=peng.PENGUIN_SEX1;
+//调用静态的方式2：类名.属性或方法
+Penguin.name="兰兰";
+Penguin.showPeng();
+</pre>
+</div>
+<p>
+-static可以用来修饰属性、方法和代码块
+-static的方法有以下几条限制
+  它们仅能调用其他的static方法。
+  它们只能访问static数据。
+  它们不能以任何方式引用this或super。
+-普通属性：实例变量
+  在程序中任何变量或代码都是在编译时由系统自动分配内存来存储的
+-静态属性：类变量
+  所谓静态就是指在编译后所分配的内存会一直存在,
+  直到程序退出内存才会释放这个空间,也就是只要程序在运行,
+  那么这块内存就会一直存在。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-10-5" class="outline-4">
+<h4 id="sec-1-10-5"><span class="section-number-4">1.10.5</span> 封装</h4>
+<div class="outline-text-4" id="text-1-10-5">
+<p>
+-为什么要使用封装
+ 下面代码有什么缺陷？
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">Dog d=new Dog();
+d.health=-100;
+//属性随意访问,不合理的赋值
+</pre>
+</div>
+<p>
+如何解决上面设计的缺陷？
+     使用封装
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-10-5-1" name="sec-1-10-5-1"></a>面向对象三大特征之一封装<br  /><div class="outline-text-5" id="text-1-10-5-1">
+<p>
+-封装的概念
+ 封装：将类的某些信息隐藏在类内部，不允许外部程序直接访问，而是通过该类提供的方法来实现对隐藏信息的操作和访问
+-封装的好处
+ 隐藏类的实现细节
+ 只能通过规定方法访问数据
+ 方便加入控制语句
+ 方便修改实现
+-封装的步骤
+ 1.修改属性的可见性-&gt;设为private
+ 2.创建公有的getter/setter方法-&gt;用于属性的读写
+ 3.在getter/setter方法中加入属性控制语句-&gt;对属性值的合法性进行判断
+</p>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-10-6" class="outline-4">
+<h4 id="sec-1-10-6"><span class="section-number-4">1.10.6</span> this的用法</h4>
+<div class="outline-text-4" id="text-1-10-6">
+<p>
+-this关键字的用法
+ 调用属性
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">this.health=100;
+this.name="大黄";
+</pre>
+</div>
+<p>
+调用方法
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">this.print();
+</pre>
+</div>
+<p>
+调用构造方法
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">this();
+this("小黑",100,100,"小雄");//如果使用,必须是构造方法中的第一条语句
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-10-7" class="outline-4">
+<h4 id="sec-1-10-7"><span class="section-number-4">1.10.7</span> 总结</h4>
+<div class="outline-text-4" id="text-1-10-7">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">static、非private修饰</th>
+<th scope="col" class="left">非static、private修饰</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">属性</td>
+<td class="left">类属性、类变量</td>
+<td class="left">实例属性、实例变量</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">方法</td>
+<td class="left">类方法</td>
+<td class="left">实例方法</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">类名.属性</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">调用方式</td>
+<td class="left">类名.方法()</td>
+<td class="left">对象.属性</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">对象.属性</td>
+<td class="left">对象.方法()</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">对象.方法()</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">归属</td>
+<td class="left">类</td>
+<td class="left">单个对象</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> 10.继承</h3>
+<div class="outline-text-3" id="text-1-11">
+<p>
+-将重复代码抽取到父类中
+-使用继承优化设计
+-使用继承优化后
+ 方便修改代码
+ 减少代码量
+-子类和父类是is-a关系
+-何时使用继承？
+ 符号is-a关系的设计使用继承
+-继承是代码重用的一种方式
+ 将子类共有的属性和行为放到父类中 
+</p>
+</div>
+<div id="outline-container-sec-1-11-1" class="outline-4">
+<h4 id="sec-1-11-1"><span class="section-number-4">1.11.1</span> 如何使用继承</h4>
+<div class="outline-text-4" id="text-1-11-1">
+<div class="org-src-container">
+
+<pre class="src src-java">class Pet{
+      //公共的属性和方法
+}
+class Dog extends Pet{  -&gt;只能继承一个父类
+    //子类特有的属性和方法
+}
+class Penguin extends Pet{
+		 |     对比
+	      继承关键字&lt;-&gt;C#用":"
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-11-2" class="outline-4">
+<h4 id="sec-1-11-2"><span class="section-number-4">1.11.2</span> 子类访问父类成员</h4>
+<div class="outline-text-4" id="text-1-11-2">
+<p>
+使用super关键字,super代表父类对象
+访问父类构造方法
+  super();       
+  super(name);    在子类构造方法中调用且必须是第一句
+访问父类属性
+   super.name;
+访问父类方法
+   super.print();
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-11-3" class="outline-4">
+<h4 id="sec-1-11-3"><span class="section-number-4">1.11.3</span> 子类可以继承父类的所有资源吗？</h4>
+<div class="outline-text-4" id="text-1-11-3">
+<p>
+-不能被继承的父类成员
+ private成员
+ 子类与父类不在同包,使用默认访问权限的成员
+ 构造方法 
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-11-4" class="outline-4">
+<h4 id="sec-1-11-4"><span class="section-number-4">1.11.4</span> 访问修饰符</h4>
+<div class="outline-text-4" id="text-1-11-4">
+<p>
+private私有的 friendly默认的；友好的 public公共的 protected受保护的 
+-访问修饰符protected
+ 可以修饰属性和方法
+ 本类、同包、子类可以访问
+-访问修饰符总结
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">访问修饰符</th>
+<th scope="col" class="left">本类</th>
+<th scope="col" class="left">同包</th>
+<th scope="col" class="left">子类</th>
+<th scope="col" class="left">其他</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">private</td>
+<td class="left">/\</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">默认(friendly)</td>
+<td class="left">/\</td>
+<td class="left">/\</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">protected</td>
+<td class="left">/\</td>
+<td class="left">/\</td>
+<td class="left">/\</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">public</td>
+<td class="left">/\</td>
+<td class="left">/\</td>
+<td class="left">/\</td>
+<td class="left">/\</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-1-11-5" class="outline-4">
+<h4 id="sec-1-11-5"><span class="section-number-4">1.11.5</span> 多重继承关系的初始化顺序</h4>
+<div class="outline-text-4" id="text-1-11-5">
+<p>
+父类属性-&gt;父类构造方法-&gt;子类属性-&gt;子类构造方法
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-11-6" class="outline-4">
+<h4 id="sec-1-11-6"><span class="section-number-4">1.11.6</span> 方法重写</h4>
+<div class="outline-text-4" id="text-1-11-6">
+<p>
+-使用继承后效果
+调用父类的print()方法,不能显示Dog的strain信息和Peguin的sex信息
+使用子类重写父类方法
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public void print(){//方法1
+  System.out.println("我的名字是"+super.getName()+"\n健康值是"+this.getHealth()+"我是一只"+sex);
+}
+public void print(){//方法2
+ super.print();
+ System.out.println("我是一只"+this.strain);
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-11-7" class="outline-4">
+<h4 id="sec-1-11-7"><span class="section-number-4">1.11.7</span> 构造方法也会被重写吗？</h4>
+<div class="outline-text-4" id="text-1-11-7">
+<p>
+-构造方法不能被继承,因此也不能重写
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-11-8" class="outline-4">
+<h4 id="sec-1-11-8"><span class="section-number-4">1.11.8</span> 方法重写的规则</h4>
+<div class="outline-text-4" id="text-1-11-8">
+<p>
+方法名相同
+参数列表相同
+返回值类型相同或者是其子类
+访问权限不能严于父类
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-11-9" class="outline-4">
+<h4 id="sec-1-11-9"><span class="section-number-4">1.11.9</span> 方法重载与方法重写</h4>
+<div class="outline-text-4" id="text-1-11-9">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">&#xa0;</th>
+<th scope="col" class="left">位置</th>
+<th scope="col" class="left">方法名</th>
+<th scope="col" class="left">参数表</th>
+<th scope="col" class="left">还回值</th>
+<th scope="col" class="left">访问修饰符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">方法重写</td>
+<td class="left">子类</td>
+<td class="left">相同</td>
+<td class="left">相同</td>
+<td class="left">相同或是其子类</td>
+<td class="left">不能比父类更严格</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">方法重载</td>
+<td class="left">同类</td>
+<td class="left">相同</td>
+<td class="left">不相同</td>
+<td class="left">无关</td>
+<td class="left">无关</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-1-11-10" class="outline-4">
+<h4 id="sec-1-11-10"><span class="section-number-4">1.11.10</span> 使用super关键字来访问父类的成员</h4>
+<div class="outline-text-4" id="text-1-11-10">
+<p>
+super只能出现在子类的方法和构造方法中
+super调用构造方法时,只能是第一句
+super不能访问父类的private成员
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-11-11" class="outline-4">
+<h4 id="sec-1-11-11"><span class="section-number-4">1.11.11</span> 抽象类</h4>
+<div class="outline-text-4" id="text-1-11-11">
+<p>
+-抽象类中的方法未必都是抽象方法
+-抽象方法必须在抽象类中
+-父类中定义方法,必须由子类实现,每个子类实现的内容不同,采取父类定义抽象方法
+</p>
+<ul class="org-ul">
+<li>以下代码有什么问题？
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-java">Pet pet=new Pet("贝贝",20,40);
+pet.print();
+</pre>
+</div>
+<p>
+实例化Pet没有意义
+-Java中也使用抽象类,限制实例化
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public abstract class Pet{
+}
+</pre>
+</div>
+<p>
+-abstract也可用于方法——抽象方法
+ 抽象方法没有方法体
+ 抽象方法必须在抽象类里
+ 抽象方法必须在子类中被实现,除非子类是抽象类
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public abstract void print(); //没有方法体
+</pre>
+</div>
+<p>
+-抽象类和抽象方法
+ 抽象类不能被实例化
+ 可以有0~多个抽象方法
+ 非抽象类必须重写父类的所有抽象方法
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-11-12" class="outline-4">
+<h4 id="sec-1-11-12"><span class="section-number-4">1.11.12</span> final修饰的方法和类、变量</h4>
+<div class="outline-text-4" id="text-1-11-12">
+<p>
+final修饰的类,不能再被继承
+final修饰的方法,不能被子类重写
+final修饰的变量将变成常量,只能在初始化时进行赋值
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-11-12-1" name="sec-1-11-12-1"></a>常见错误<br  /><div class="outline-text-5" id="text-1-11-12-1">
+<div class="org-src-container">
+
+<pre class="src src-java">class Dog{
+  String name;
+  public Dog(String name){
+    this.name=name; 
+  }
+}
+class Test{
+  public static void main(String[]args){
+    final Dog dog=new Dog("欧欧");
+    dog.name="美美";
+    dog=new Dog("亚亚");//使用final修饰引用型变量,变量不可以再指向另外的对象
+  }//使用final修饰引用型变量,变量的值是固定不变的,而变量所指向的对象的属性值是可变的
+}
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+</div>
+<div id="outline-container-sec-1-12" class="outline-3">
+<h3 id="sec-1-12"><span class="section-number-3">1.12</span> 11.多态</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+-程序中的多态
+ 多态：同一个引用类型,使用不同的实例而执行不同操作//父类引用,子类对象
+</p>
+</div>
+<div id="outline-container-sec-1-12-1" class="outline-4">
+<h4 id="sec-1-12-1"><span class="section-number-4">1.12.1</span> 使用多态实现思路</h4>
+<div class="outline-text-4" id="text-1-12-1">
+<p>
+编写父类
+编写子类,子类重写父类方法
+运行时,使用父类的类型,子类的对象
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"> 向上转型
+Pet pet=new Dog(); //自动类型转换
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-12-2" class="outline-4">
+<h4 id="sec-1-12-2"><span class="section-number-4">1.12.2</span> 实现多态的两种形式</h4>
+<div class="outline-text-4" id="text-1-12-2">
+<p>
+使用父类作为方法形参实现多态
+使用父类作为方法返回值实现多态
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-12-3" class="outline-4">
+<h4 id="sec-1-12-3"><span class="section-number-4">1.12.3</span> 实现多态的三种形式</h4>
+<div class="outline-text-4" id="text-1-12-3">
+<p>
+-形式1：
+ 父类Pet做形参
+ 子类Dog做实参
+-形式2：
+ 父类做引用类型,子类实例化
+-形式3：
+ 父类作为方法返回值,子类实例化
+ 类型自动转换
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-12-4" class="outline-4">
+<h4 id="sec-1-12-4"><span class="section-number-4">1.12.4</span> 代码示例</h4>
+<div class="outline-text-4" id="text-1-12-4">
+<div class="org-src-container">
+
+<pre class="src src-java">public class Pet{
+   public void eat(){
+       System.out.println("pet正在吃");
+   }
+}
+public class Dog extends Pet{
+    public void eat(){
+	System.out.pritnln("狗狗吃狗粮");  
+    }
+    public void carchFlyDisk(){
+	System.out.pritnln("狗狗玩飞盘"); 
+    }
+}
+public class Penguin extends Pet{
+    public void eat(){
+	System.out.pritnln("企鹅吃鱼");  
+    }
+    public void swiming(){
+	System.out.pritnln("企鹅游泳");  
+    }
+}
+public class Master{
+   // public void feed(Dog dog){
+     //     dog.eat();
+    // }
+    //public void feed(Penguin peng ){
+    //      peng.eat();
+     //}
+      public void feed(Pet pet){
+	  pet.eat();
+      }
+   //领养宠物 多态形式3：父类作为方法返回值，子类实例化 类型自动转换
+       public Pet getPet(int typeid){
+	   Pet pet=null;
+	   if(typeid==1){
+	       pet=new Dog(); 
+	   }
+	   else if(typeid==2){
+	       pet=new Penguin();
+	   }  
+	   return pet; 
+       } 
+    //主人和宠物玩耍的行为
+	public void play(Pet pet){
+	    if(pet instanceof Dog){
+	       Dog dog=(Dog)pet;//向下转型
+	       dog.catchFlyDisk();     
+	    }else if(pet instanceof Penguin){
+	       Penguin peng=(Penguin)pet;
+	       peng.swiming();
+	    }
+	}
+}
+public class Test{
+   public static void main(String[]args){
+	 //多态的形式1
+	 Dog dog=new Dog();
+	 //dog.eat();
+	 Penguin peng=new Penguin();
+	 Master ms=new Master();
+	 ms.feed(dog);
+	 ms.feed(peng);
+	 //多态的形式2
+	 Pet pet=new Dog();//自动转换
+	 pet.eat();
+	 //调用领养宠物 形式3：父类作为方法的返回类型
+	 System.out.println("请选择您要领养的宠物:(1-狗狗2-企鹅)");
+	 Scanner input=new Scanner(System.in);
+	 int xz=input.nextInt();
+	 Master dx=new Master();
+	 Pet pets=dx.getPet(xz);
+	 pets.eat();
+
+	 dx.play(dog);
+   }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-12-5" class="outline-4">
+<h4 id="sec-1-12-5"><span class="section-number-4">1.12.5</span> 总结</h4>
+<div class="outline-text-4" id="text-1-12-5">
+<p>
+-多态可以减少类中代码量
+ 可以提高代码的可扩展性和可维护性
+-向上转型——子类转换为父类
+ 自动进行类型转换
+-向下转型——父类转换为子类
+ 结合instanceof运算符进行强制类型转换
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-13" class="outline-3">
+<h3 id="sec-1-13"><span class="section-number-3">1.13</span> 12.接口</h3>
+<div class="outline-text-3" id="text-1-13">
+<p>
+-接口是一种能力
+ 体现在接口的方法上
+-面向接口编程
+ 程序     关心实现类有何能力,而不关心实现细节
+设计时     面向接口的约定而不考虑接口的具体实现
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public interface MyInterface{
+  public void foo(); //所有方法都是：public abstract
+  //其他方法
+}
+public interface Usb{
+   public static final String NAME="接口";
+   void service();
+}
+public class UsbFan implements Usb{
+    public void service(){
+       System.out.println("")
+    }
+}
+public class Test{
+   Usb us=new UsbFan();
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-1-13-1" class="outline-4">
+<h4 id="sec-1-13-1"><span class="section-number-4">1.13.1</span> 接口是一种约定和能力</h4>
+<div class="outline-text-4" id="text-1-13-1">
+<p>
+接口实现java多继承
+接口中所有方法都是抽象方法
+接口中所有变量都是静态常量
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-13-2" class="outline-4">
+<h4 id="sec-1-13-2"><span class="section-number-4">1.13.2</span> 必须知道的接口特性</h4>
+<div class="outline-text-4" id="text-1-13-2">
+<p>
+接口不可以被实例化            常作为类型使用
+实现类必须实现接口的所有方法
+实现类可以实现多个接口        Java中的多继承
+接口中的变量都是静态常量
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-13-3" class="outline-4">
+<h4 id="sec-1-13-3"><span class="section-number-4">1.13.3</span> 接口有比抽象类更好的特性</h4>
+<div class="outline-text-4" id="text-1-13-3">
+<p>
+1.可以被多继承
+2.设计和实现完全分离
+3.更自然的使用多态
+4.更容易搭建程序框架
+5.更容易更换实现
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-13-4" class="outline-4">
+<h4 id="sec-1-13-4"><span class="section-number-4">1.13.4</span> Java中的接口</h4>
+<div class="outline-text-4" id="text-1-13-4">
+<p>
+属性全都是全局静态常量
+方法都是全局抽象方法
+无构造方法
+-一个类可以实现多个接口,非抽象类实现接口时必须实现接口中的全部方法
+-抽象类利于代码复用,接口利于代码维护
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-14" class="outline-3">
+<h3 id="sec-1-14"><span class="section-number-3">1.14</span> 13.异常</h3>
+<div class="outline-text-3" id="text-1-14">
+<p>
+-异常是指在程序的运行过程中所发生的不正常的事件,它会中断正在运行的程序
+生活中,根据不同的异常进行相应的处理,而不会就此中断我们的生活
+-Java编程语言使用异常处理机制为程序提供错误处理的能力
+程序中预先设置好
+对付异常的处理办法   -&gt;程序运行 -&gt;异常 -&gt;对异常进行处理 -&gt;处理完毕,程序继续运行
+</p>
+</div>
+<div id="outline-container-sec-1-14-1" class="outline-4">
+<h4 id="sec-1-14-1"><span class="section-number-4">1.14.1</span> Java的异常处理是通过5个关键字来实现的:</h4>
+<div class="outline-text-4" id="text-1-14-1">
+<p>
+try、catch、finally、throw、throws
+          捕获异常              声明异常             抛出异常
+try     执行可能产生             throws              throw    
+        异常的代码
+</p>
+
+<p>
+catch   捕获异常                声明方法可能要       手动抛出异常    
+                               抛出的各种异常
+</p>
+
+<p>
+finally 无论是否发生异常,
+        代码总能执行
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-14-2" class="outline-4">
+<h4 id="sec-1-14-2"><span class="section-number-4">1.14.2</span> 使用try-catch块捕获异常,分为三种情况:</h4>
+<div class="outline-text-4" id="text-1-14-2">
+</div><ol class="org-ol"><li><a id="sec-1-14-2-1" name="sec-1-14-2-1"></a>第一种情况：正常<br  /><div class="outline-text-5" id="text-1-14-2-1">
+<div class="org-src-container">
+
+<pre class="src src-java">public void method(){
+  try{
+     //代码段(此处不会产生异常)
+  }catch(异常类型 ex){
+     //对异常进行处理的代码段
+   }
+     //代码段
+}
+</pre>
+</div>
+</div>
+</li>
+<li><a id="sec-1-14-2-2" name="sec-1-14-2-2"></a>第二种情况：出现异常<br  /><div class="outline-text-5" id="text-1-14-2-2">
+<div class="org-src-container">
+
+<pre class="src src-java">public void method(){
+    try{
+       //代码段1
+       //产生异常的代码段2
+       //代码段3
+     }catch(异常类型 ex){
+       //对异常进行处理的代码段4 
+      }
+      //代码段5
+}
+</pre>
+</div>
+<p>
+-异常是一种特殊的对象,类型为java.lang.Exception或其子类
+   发生异常                       进入catch块    程序继续执行
+try-&#x2014;&#x2014;&gt;产生异常对象 异常类型匹配-&#x2014;&#x2014;&#x2014;&gt;catch&#x2013;&#x2014;&gt;try-catch块后的代码段
+-printStackTrace的堆栈跟踪功能显示出程序运行到当前类的执行流程
+异常堆栈信息
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">java.util.InputMismatchException //异常类型
+at.cn.jbit.exception.Test3.main(Test3.java:15)
+			     |           |
+		    在此方法中抛出了异常  出现异常的位置
+</pre>
+</div>
+<p>
+-获得异常信息：
+e.getMessage();
+-获得异常的内存堆栈信息及错误的位置
+e.printStackTrace();
+</p>
+</div>
+</li>
+<li><a id="sec-1-14-2-3" name="sec-1-14-2-3"></a>第三种情况：异常类型不匹配<br  /><div class="outline-text-5" id="text-1-14-2-3">
+<div class="org-src-container">
+
+<pre class="src src-java">public void method(){
+    try{
+       //代码段1
+       //产生异常的代码段2
+       //代码段3
+     }catch(异常类型 ex){
+       //对异常进行处理的代码段4 
+      }//代码段5
+}
+</pre>
+</div>
+<p>
+   发生异常                        程序中断运行    
+try-&#x2014;&#x2014;&gt;产生异常对象 异常类型不匹配-&#x2014;&#x2014;&#x2014;&gt;
+</p>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-14-3" class="outline-4">
+<h4 id="sec-1-14-3"><span class="section-number-4">1.14.3</span> 在catch块中处理异常 加入用户自定义处理信息</h4>
+<div class="outline-text-4" id="text-1-14-3">
+<p>
+System.err.println("出现错误：被除数和除数必须是整数"+"除数不能为零");
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-14-4" class="outline-4">
+<h4 id="sec-1-14-4"><span class="section-number-4">1.14.4</span> 调用方法输出异常信息</h4>
+<div class="outline-text-4" id="text-1-14-4">
+<p>
+e.printStackTrace();
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-14-5" class="outline-4">
+<h4 id="sec-1-14-5"><span class="section-number-4">1.14.5</span> 异常对象常用的方法</h4>
+<div class="outline-text-4" id="text-1-14-5">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">方法名</th>
+<th scope="col" class="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">void printStackTrace()</td>
+<td class="left">输出异常的堆栈信息</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">String getMessage（）</td>
+<td class="left">返回异常信息描述字符串,是printStackTrace()输出信息的一部分</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-1-14-6" class="outline-4">
+<h4 id="sec-1-14-6"><span class="section-number-4">1.14.6</span> 常见的异常类型</h4>
+<div class="outline-text-4" id="text-1-14-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">异常类型</th>
+<th scope="col" class="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Exception</td>
+<td class="left">异常层次结构的父类</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">ArithmeticException</td>
+<td class="left">算术错误情形,如以零作除数</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">ArrayIndexOutOfBoundsException</td>
+<td class="left">数组下标越界</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">NullPointerException</td>
+<td class="left">尝试访问null对象成员</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">ClassNotFoundException</td>
+<td class="left">不能加载所需的类</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">IIIegalArgumentException</td>
+<td class="left">方法接收到非法参数</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">ClassCastException</td>
+<td class="left">对象强制类型转换出错</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">NumberFormatException</td>
+<td class="left">数字格式转换异常,如把"abc"转换成数字</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-1-14-7" class="outline-4">
+<h4 id="sec-1-14-7"><span class="section-number-4">1.14.7</span> 什么情况下不走finally</h4>
+<div class="outline-text-4" id="text-1-14-7">
+<p>
+System.exit(1);//退出java的虚拟机
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-14-8" class="outline-4">
+<h4 id="sec-1-14-8"><span class="section-number-4">1.14.8</span> try块中有return语句执行过程</h4>
+<div class="outline-text-4" id="text-1-14-8">
+<p>
+catch{
+   return;
+}finally //执行finally块，执行return退出方法
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-14-9" class="outline-4">
+<h4 id="sec-1-14-9"><span class="section-number-4">1.14.9</span> 多重catch块</h4>
+<div class="outline-text-4" id="text-1-14-9">
+<p>
+引发多种类型的异常
+   排列catch语句的顺序：先子类后父类
+   发生异常时按顺序逐个匹配
+   只执行第一个与异常类型匹配的catch语句
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-14-10" class="outline-4">
+<h4 id="sec-1-14-10"><span class="section-number-4">1.14.10</span> 总结</h4>
+<div class="outline-text-4" id="text-1-14-10">
+<p>
+-异常分为Checked异常和运行时异常,Checked异常必须捕获或声明抛出,运行时异常不要求必须捕获或者声明抛出
+-try-catch-finally中存在return语句的执行顺序
+-finally块中语句不执行的情况
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-14-11" class="outline-4">
+<h4 id="sec-1-14-11"><span class="section-number-4">1.14.11</span> 声明异常</h4>
+<div class="outline-text-4" id="text-1-14-11">
+<p>
+-throws声明异常,抛给调用这处理,调用者必须进行try..catch
+ 位置：方法名后面进行 声明异常,多个异常使用逗号隔开
+</p>
+</div>
+<ol class="org-ol"><li><a id="sec-1-14-11-1" name="sec-1-14-11-1"></a>如果在一个方法体中抛出了异常，如何通知调用者？<br  /><div class="outline-text-5" id="text-1-14-11-1">
+<div class="org-src-container">
+
+<pre class="src src-java">public class Test7{                 //声明异常,多个异常使用逗号隔开
+	 public static void divide()throws Exception{
+		     //可能出现异常的代码
+	 }
+	 public static void main(String[] args){
+		    try{            //方式1：调用者处理异常
+			 divide();  
+		    }catch(Exception e){
+			    e.printStackTrace();
+		     }
+	 }
+	 public static void main(String[] args)throws Exception{
+		      divide();    //方式2：调用者继续声明异常
+	 }  //main方法声明的异常由Java虚拟机处理
+}
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-14-12" class="outline-4">
+<h4 id="sec-1-14-12"><span class="section-number-4">1.14.12</span> 抛出异常</h4>
+<div class="outline-text-4" id="text-1-14-12">
+<p>
+除了系统自动抛出异常外，有些问题需要程序员自行抛出异常
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">public void setAge(int age){
+    if(age&gt;0&amp;&amp;age&lt;=100){
+	this.age=age;
+    }else{
+	try{//手动抛出异常
+	   throw new Exception("输入的年龄必须是0~100之间的数");  
+	}catch(Exception e){
+	    e.printStackTrace();  
+	 }  
+    }
+}
+public void setSex(String sex)throws Exception{
+    if(!sex.equals("男")&amp;&amp;！sex.equals("女")){
+	 throw new Exception("输入必须是男或女");     
+    }else{
+      this.sex=sex;
+     }
+
+}
+public class TestPerson{
+   public static void main(String[] args){
+      PersonThrow per=new PersonThrow();
+      per.setAge(-90);
+      System.out.println(per.getAge());
+
+      try{
+	 per.setSex("fd");
+	 System.out.println(per.getSex());
+      }catch(Exception e){
+	  e.printStackTrace();
+      }   
+   }    
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-14-13" class="outline-4">
+<h4 id="sec-1-14-13"><span class="section-number-4">1.14.13</span> 异常的分类</h4>
+<div class="outline-text-4" id="text-1-14-13">
+<p>
+Object
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+<p>
+Throwable //Exception和Error类的父类
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<p>
+Error//仅靠程序本身无法恢复的严重错误                                  Exception//由Java应用程序抛出和处理的非严重错误  
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<p>
+AWTError ThreadDeath &#x2026;           SQLException ClassNotfoundException &#x2026; //Checked异常,程序必须处理该类异常     RuntimeException//运行时异常,不要求程序必须做出处理 
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<tbody>
+<tr>
+</tr>
+</tbody>
+</table>
+<p>
+ArithmeticException NullPointerException NumberFormatException &#x2026;
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-14-14" class="outline-4">
+<h4 id="sec-1-14-14"><span class="section-number-4">1.14.14</span> throw与throws的区别</h4>
+<div class="outline-text-4" id="text-1-14-14">
+<p>
+throws在方法里抛出异常,可以抛出多个异常给虚拟机处理或给调用者去处理
+throw每次只能手动抛出一个异常并且用try-catch去处理或者抛给别人
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-14-15" class="outline-4">
+<h4 id="sec-1-14-15"><span class="section-number-4">1.14.15</span> 日志及分类</h4>
+<div class="outline-text-4" id="text-1-14-15">
+<p>
+日志(log)
+   主要用来记录系统运行中一些重要操作信息
+   便于监视系统运行情况,帮助用户提前发现和
+   避开可能出现的问题,或者出现问题后根据日志找到原因
+日志分类
+   SQL日志、异常日志、业务日志
+log4j是一个非常优秀的开源日志记录工具
+     控制日志的输出级别
+     控制日志信息输送的目的地是控制台、文件等
+     控制每一条日志的输出格式  
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-14-16" class="outline-4">
+<h4 id="sec-1-14-16"><span class="section-number-4">1.14.16</span> 使用log4j记录日志</h4>
+<div class="outline-text-4" id="text-1-14-16">
+<p>
+-使用log4j记录程序运行的过程,存储起来,方便后期查看
+使用log4j记录日志步骤
+  1.在项目中加入log4j的JAR文件
+  2.创建log4j.properties文件
+  3.配置日志信息
+  4.使用log4j记录日志信息 
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-15" class="outline-3">
+<h3 id="sec-1-15"><span class="section-number-3">1.15</span> 14.集合框架</h3>
+<div class="outline-text-3" id="text-1-15">
+</div><div id="outline-container-sec-1-15-1" class="outline-4">
+<h4 id="sec-1-15-1"><span class="section-number-4">1.15.1</span> 为什么使用集合框架</h4>
+<div class="outline-text-4" id="text-1-15-1">
+<p>
+-如果并不知道程序运行时会需要多少对象,或者需要更复杂方式存储对象-可以使用Java集合框架
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-15-2" class="outline-4">
+<h4 id="sec-1-15-2"><span class="section-number-4">1.15.2</span> Java集合框架包含的内容</h4>
+<div class="outline-text-4" id="text-1-15-2">
+<p>
+-Java集合框架提供了一套性能优良、使用方便的接口和类,它们位于java.util包中
+1.接口
+                       Collection                                        Map
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<p>
+List                  Set                         HashMap    TreeMap
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<p>
+        ArrayList  LinkedList   HashSet  TreeSet
+2.具体类
+3.算法
+Collections-&gt;提供了对集合进行排序、遍历等多种算法实现
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-15-3" class="outline-4">
+<h4 id="sec-1-15-3"><span class="section-number-4">1.15.3</span> 接口介绍</h4>
+<div class="outline-text-4" id="text-1-15-3">
+<p>
+Collection接口存储一组不唯一，无序的对象
+List接口存储一组不唯一，有序(插入顺序)的对象
+Set接口存储一组唯一，无序的对象
+Map接口存储一组键值对象,提供key到value的映射
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-15-4" class="outline-4">
+<h4 id="sec-1-15-4"><span class="section-number-4">1.15.4</span> List接口的实现类</h4>
+<div class="outline-text-4" id="text-1-15-4">
+<p>
+ArrayList实现了长度可变得数组,在内存中分配连续的空间。遍历元素和随机访问元素的效率比较高
+LinkedList采用链表存储方式。插入、删除元素时效率比较高
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-15-5" class="outline-4">
+<h4 id="sec-1-15-5"><span class="section-number-4">1.15.5</span> ArrayList的应用</h4>
+<div class="outline-text-4" id="text-1-15-5">
+<div class="org-src-container">
+
+<pre class="src src-java">//1.声明集合
+List lis=new ArrayList();
+//2.添加操作
+lis.add(dog1);//Dog类型--&gt;Object 装箱 0
+lis.add(dog2);//1
+lis.add(dog3);//2
+lis.add(1,dog5);//将dog5对象添加到了集合的索引号为1的位置,其余的索引号重新排列
+//3.遍历方式1 索引号遍历
+for(int i=0;i&lt;lis.size();i++){
+      Object obj=lis.get(i);//object--&gt;Dog 拆箱
+      Dog dogs=(Dog)obj;
+      dogs.print();
+}
+//4.遍历方式2:
+System.out.println("*****foreach遍历方式*****");
+for(Object obj:lis){
+    ((Dog)obj).print(); 
+}
+//5.删除方式
+lis.remove(0);//删除索引号为0的对象
+lis.remove(dog2);//按照指定的对象名删除
+//6.contains包含 判断对象是否存在
+if(lis.contains(dog2)){
+   System.out.println("静静对象存在");
+}else{
+   System.out.println("静静对象不存在");
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-15-6" class="outline-4">
+<h4 id="sec-1-15-6"><span class="section-number-4">1.15.6</span> List接口常用方法</h4>
+<div class="outline-text-4" id="text-1-15-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">方法名</th>
+<th scope="col" class="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">boolean add(Object o)</td>
+<td class="left">在列表的末尾顺序添加元素,起始索引位置从0开始</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">void add(int index,Object o)</td>
+<td class="left">在指定的索引位置添加元素。索引位置必须介于0和列表中元素个数之间</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">int size()</td>
+<td class="left">返回列表中的元素个数</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Object get(int index)</td>
+<td class="left">返回指定索引位置处的元素。取出的元素是Object类型,使用前需要进行强制类型转换</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">boolean contains(Object o)</td>
+<td class="left">判断列表中是否存在指定元素</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">boolean remove(Object o)</td>
+<td class="left">从列表中删除元素</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Objectremove(int index)</td>
+<td class="left">从列表中删除指定位置元素,起始索引位置从0开始</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-1-15-7" class="outline-4">
+<h4 id="sec-1-15-7"><span class="section-number-4">1.15.7</span> LinkedList集合类</h4>
+<div class="outline-text-4" id="text-1-15-7">
+<p>
+在集合任何位置(头部、中间、尾部)添加、获取、删除狗狗对象
+插入、删除操作频繁时，可使用LinkedList来提高效率
+  LinkedList提供对头部和尾部元素进行添加和删除操作的方法
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">//声明集合
+LinkedList lis=new LinkedList();
+lis.addFirst(dog5);//将对象dog5添加到第一个位置
+lis.addLast(dog6);//将对象dog6添加到最后一个位置
+System.out.println("获得第一个对象为：");
+((Dog)lis.getFirst()).print();
+System.out.println("获得最后一个对象为：");
+((Dog)lis.getLast()).print();
+System.out.println("删除第一个对象为：");
+lis.removeFirst();
+System.out.println("删除最后一个对象为：");
+lis.removeLast();
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-15-8" class="outline-4">
+<h4 id="sec-1-15-8"><span class="section-number-4">1.15.8</span> LinkedList的特殊方法</h4>
+<div class="outline-text-4" id="text-1-15-8">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">方法名</th>
+<th scope="col" class="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">void addFirst(Object o)</td>
+<td class="left">在列表的首部添加元素</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">void addLast(Object o)</td>
+<td class="left">在列表的末尾添加元素</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Object getFirst()</td>
+<td class="left">返回列表中的第一个元素</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Object getLast()</td>
+<td class="left">返回列表中的最后一个元素</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Object removeFirst()</td>
+<td class="left">删除并返回列表中的第一个元素</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Object removeLast()</td>
+<td class="left">删除并返回列表中的最后一个元素</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-1-15-9" class="outline-4">
+<h4 id="sec-1-15-9"><span class="section-number-4">1.15.9</span> Map接口</h4>
+<div class="outline-text-4" id="text-1-15-9">
+<p>
+Map接口专门处理键值映射数据的存储,可以根据键实现对值的操作
+   最常用的实现类是HashMap
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-15-10" class="outline-4">
+<h4 id="sec-1-15-10"><span class="section-number-4">1.15.10</span> HashMap类的方法</h4>
+<div class="outline-text-4" id="text-1-15-10">
+<div class="org-src-container">
+
+<pre class="src src-java">//1.声明Map接口下的类
+Map coutries=new HashMap();
+//2.添加 put(Object key键名,Object value值)
+coutries.put("CN","中华人民共和国");
+coutries.put("RU","俄罗斯联邦");
+coutries.put("FR","法兰西共和国");
+//3.通过key获得值
+String country=(String)coutries.get("CN");
+System.out.println(country);
+//4.显示集合中的个数
+System.out.println("Map接口中共有"+coutries.size()+"组数据");
+//5.两次判断Map接口中是否存在FR 键名
+boolean bo=coutries.containsKey("FR");
+System.out.println(bo);
+if(bo){
+   System.out.println("此集合中含有FR");
+}else{
+   System.out.println("此集合中不含有FR");
+}
+//判断value值是否存在
+boolean bovalue=coutries.containsValue("中华人民共和国");
+System.out.println("是否包含中华人民共和国"+bovalue);
+//6.删除集合对象
+coutries.remove("FR");
+//7.分别显示键集,值集,键值对集合
+System.out.println(coutries.keySet());
+System.out.println(coutries.values());
+System.out.println(coutries);
+//8.foreach遍历
+for(Object obj:coutries.keySet()){
+     String keyz=(String)obj;
+     System.out.println("键名集合:"+keyz);
+}
+for(Object obj:coutries.values()){
+     String valuez=(String)obj;
+     System.out.println("value值集合:"+valuez);
+}
+//9.清空HashMap判断
+coutries.clear();
+if(coutries.isEmpty()){
+   System.out.println("已经将所有的Map接口清空");
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-15-11" class="outline-4">
+<h4 id="sec-1-15-11"><span class="section-number-4">1.15.11</span> Map接口常用方法</h4>
+<div class="outline-text-4" id="text-1-15-11">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">方法名</th>
+<th scope="col" class="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Object put(Object key,Object val)</td>
+<td class="left">以"键-值对"的方式进行存储</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Object get(Object key)</td>
+<td class="left">根据键返回相关联的值,如果不存在指定的键,返回null</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Object remove(Object key)</td>
+<td class="left">删除由指定的键映射的"键-值对"</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">int size()</td>
+<td class="left">返回元素个数</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Set keySet</td>
+<td class="left">返回键的集合</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Collection values()</td>
+<td class="left">返回值的集合</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">booleancontainsKey(Object key)</td>
+<td class="left">如果存在由指定的键映射的"键-值对",返回true</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-1-15-12" class="outline-4">
+<h4 id="sec-1-15-12"><span class="section-number-4">1.15.12</span> 集合类对比</h4>
+<div class="outline-text-4" id="text-1-15-12">
+</div><ol class="org-ol"><li><a id="sec-1-15-12-1" name="sec-1-15-12-1"></a>Vector和ArrayList的异同<br  /><div class="outline-text-5" id="text-1-15-12-1">
+<p>
+实现原理、功能相同,可以互用
+主要区别
+    Vector线程安全,ArrayList重速度轻安全,线程非安全
+    长度需增长时,Vector默认增长一倍,ArrayList增长50%
+</p>
+</div>
+</li>
+<li><a id="sec-1-15-12-2" name="sec-1-15-12-2"></a>Hashtable和HashMap的异同<br  /><div class="outline-text-5" id="text-1-15-12-2">
+<p>
+实现原理、功能相同,可以互用
+主要区别
+    Hashtable继承Dictionary类,HashMap实现Map接口
+    Hashtable线程安全,HashMap线程非安全
+    Hashtable不允许null值,HashMap允许null值  
+</p>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-15-13" class="outline-4">
+<h4 id="sec-1-15-13"><span class="section-number-4">1.15.13</span> 开发过程中,最好使用ArrayList和HashMap</h4>
+</div>
+<div id="outline-container-sec-1-15-14" class="outline-4">
+<h4 id="sec-1-15-14"><span class="section-number-4">1.15.14</span> 迭代器Iterator</h4>
+<div class="outline-text-4" id="text-1-15-14">
+</div><ol class="org-ol"><li><a id="sec-1-15-14-1" name="sec-1-15-14-1"></a>如何遍历Map集合呢？<br  /><div class="outline-text-5" id="text-1-15-14-1">
+<p>
+方法1:通过迭代器Iterator实现遍历
+    获取Iterator：Collection接口的iterate()方法
+    Iterator的方法
+boolean hasNext():判断是否存在另一个可访问的元素
+Object next():返回要访问的下一个元素
+方法2：
+  增强型for循环
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java">Dog dog1=new Dog("兰兰",100,90,"拉不拉");
+Dog dog2=new Dog("楠楠",70,50,"雪纳瑞");
+Map dogMap=new HashMap();
+dogMap.put(dog1.getName(),dog1);
+dogMap.put(dog2.getName(),dog2);
+System.out.println("方式1:使用Iterator遍历所有的信息:");
+//方式1:迭代器方式
+Set keys=dogMap.keySet();
+//获得Iterator对象
+Iterator it=keys.iterator();
+while(it.hasNext()){
+    String key=(String)it.next();//获得键名
+    System.out.println(key);
+}
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+</div>
+<div id="outline-container-sec-1-16" class="outline-3">
+<h3 id="sec-1-16"><span class="section-number-3">1.16</span> 程序调试</h3>
+<div class="outline-text-3" id="text-1-16">
+<p>
+-在编写程序过程中有时也出现错误，但不好发现和定位错误，有没有好的方法呢？
+</p>
+<ul class="org-ul">
+<li>通过代码阅读或者加输出语句查找程序错误
+</li>
+<li>当程序结构越来越复杂时，需要专门的技术来发现和定位错误，就是"程序调试"
+</li>
+</ul>
+<p>
+-当程序出错时，我们希望能这样：
+</p>
+<ul class="org-ul">
+<li>逐条语句执行程序-&gt;观察程序执行情况-&gt;发现问题-&gt;解决问题
+</li>
+</ul>
+<p>
+-程序执行时忽闪一下就运行结束，怎么让程序一步一步运行？
+</p>
+<ul class="org-ul">
+<li>程序调试-&gt;设置断点//断点：程序暂停执行的代码行
+-&gt;单步运行
+-&gt;观察变量
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2017-11-25 周六 12:14</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
